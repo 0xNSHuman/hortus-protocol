@@ -101,7 +101,7 @@ ReentrancyGuard {
     /** 
     @notice Claim accumulated membership rewards
     */
-    function claimRewards() override external {
+    function claimRewards() override nonReentrant external {
 
     }
 
