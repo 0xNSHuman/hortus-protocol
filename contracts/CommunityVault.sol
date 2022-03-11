@@ -36,6 +36,9 @@ ReentrancyGuard {
     ) ERC721(
         _name, _symbol
     ) {
+        require(bytes(_symbol).length != 0, "Empty symbol");
+        require(bytes(_name).length != 0, "Empty name");
+
         commerceToken = _commerceToken;
         membershipPrice = _membershipPrice;
     }
@@ -46,7 +49,10 @@ ReentrancyGuard {
     @notice Update community settings
     */
     function configure(address _commerceToken, uint _membershipPrice) override external onlyOwner {
+        commerceToken = _commerceToken;
+        membershipPrice = _membershipPrice;
 
+        emit ConfigurationUpdate(commerceToken, membershipPrice);
     }
 
     /** 
