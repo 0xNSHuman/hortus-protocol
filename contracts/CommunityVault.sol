@@ -52,8 +52,22 @@ ReentrancyGuard {
     /** 
     @notice Withdraw the payments accumulated for creator
     */
-    function withdrawCreatorRewards() override external onlyOwner returns (uint) {
+    function withdrawCreatorRewards(address _token) override external onlyOwner nonReentrant {
+        uint amount = _creatorFunds[_token];
 
+        if (amount == 0) { return; }
+
+        _creatorFunds[_token] = 0;
+
+        if (_token == address(0)) {
+            (bool sent, ) = msg.sender.call{value: amount}("");
+            require(sent, "Ether withdrawal failure");
+        } else {
+            IERC20(_token).safeIncreaseAllowance(address(this), amount);
+            IERC20(_token).safeTransfer(msg.sender, amount);
+        }
+
+        emit CreatorRewardsWithdrawal(msg.sender, _token, amount);
     }
 
     /** 
@@ -103,8 +117,8 @@ ReentrancyGuard {
     /** 
     @notice Get total withdrawable amount for creator
     */
-    function totalCreatorRewardsAccumulated() override external view returns (uint) {
-        
+    function totalCreatorRewardsAccumulated(address _token) override external view returns (uint) {
+        return _creatorFunds[_token];
     }
 
     /** 
