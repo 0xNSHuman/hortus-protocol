@@ -33,6 +33,10 @@ export default {
         "*": {
           "*": ["storageLayout"]
         }
+      },
+      optimizer: {
+        enabled: true,
+        runs: 2
       }
     }
   },
