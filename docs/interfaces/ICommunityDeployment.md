@@ -13,7 +13,7 @@
 ### createCommunity
 
 ```solidity
-function createCommunity(string _symbol, string _name, address _commerceToken, uint256 _membershipPrice) external nonpayable returns (address)
+function createCommunity(string symbol, string name, address commerceToken, uint256 membershipPrice, uint256 membershipPeriod) external nonpayable returns (address)
 ```
 
 
@@ -24,10 +24,11 @@ function createCommunity(string _symbol, string _name, address _commerceToken, u
 
 | Name | Type | Description |
 |---|---|---|
-| _symbol | string | undefined |
-| _name | string | undefined |
-| _commerceToken | address | undefined |
-| _membershipPrice | uint256 | undefined |
+| symbol | string | undefined |
+| name | string | undefined |
+| commerceToken | address | undefined |
+| membershipPrice | uint256 | undefined |
+| membershipPeriod | uint256 | undefined |
 
 #### Returns
 

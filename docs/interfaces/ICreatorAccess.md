@@ -13,7 +13,7 @@
 ### totalCreatorRewardsAccumulated
 
 ```solidity
-function totalCreatorRewardsAccumulated(address _token) external view returns (uint256)
+function totalCreatorRewardsAccumulated(address token) external view returns (uint256)
 ```
 
 
@@ -24,7 +24,7 @@ function totalCreatorRewardsAccumulated(address _token) external view returns (u
 
 | Name | Type | Description |
 |---|---|---|
-| _token | address | undefined |
+| token | address | undefined |
 
 #### Returns
 
@@ -35,7 +35,7 @@ function totalCreatorRewardsAccumulated(address _token) external view returns (u
 ### withdrawCreatorRewards
 
 ```solidity
-function withdrawCreatorRewards(address _token) external nonpayable
+function withdrawCreatorRewards(address token) external nonpayable
 ```
 
 
@@ -46,7 +46,7 @@ function withdrawCreatorRewards(address _token) external nonpayable
 
 | Name | Type | Description |
 |---|---|---|
-| _token | address | undefined |
+| token | address | undefined |
 
 
 

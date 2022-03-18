@@ -10,16 +10,23 @@
 
 ## Methods
 
-### claimRewards
+### configureMembership
 
 ```solidity
-function claimRewards() external nonpayable
+function configureMembership(address _commerceToken, uint256 _membershipPrice, uint256 _membershipPeriod) external nonpayable
 ```
 
 
 
 
 
+#### Parameters
+
+| Name | Type | Description |
+|---|---|---|
+| _commerceToken | address | undefined |
+| _membershipPrice | uint256 | undefined |
+| _membershipPeriod | uint256 | undefined |
 
 ### subscribe
 
@@ -35,30 +42,18 @@ function subscribe() external payable
 ### subscriptionExpiration
 
 ```solidity
-function subscriptionExpiration() external view returns (uint256)
+function subscriptionExpiration(uint256 tokenId) external view returns (uint256)
 ```
 
 
 
 
 
-
-#### Returns
+#### Parameters
 
 | Name | Type | Description |
 |---|---|---|
-| _0 | uint256 | undefined |
-
-### totalRewardsAccumulated
-
-```solidity
-function totalRewardsAccumulated() external view returns (uint256)
-```
-
-
-
-
-
+| tokenId | uint256 | undefined |
 
 #### Returns
 
@@ -70,10 +65,10 @@ function totalRewardsAccumulated() external view returns (uint256)
 
 ## Events
 
-### NewSubscription
+### MembershipConfigurationUpdate
 
 ```solidity
-event NewSubscription(address indexed supporter, uint256 indexed expiration)
+event MembershipConfigurationUpdate(address indexed commerceToken, uint256 indexed membershipPrice, uint256 indexed membershipPeriod)
 ```
 
 
@@ -84,7 +79,25 @@ event NewSubscription(address indexed supporter, uint256 indexed expiration)
 
 | Name | Type | Description |
 |---|---|---|
-| supporter `indexed` | address | undefined |
+| commerceToken `indexed` | address | undefined |
+| membershipPrice `indexed` | uint256 | undefined |
+| membershipPeriod `indexed` | uint256 | undefined |
+
+### NewSubscription
+
+```solidity
+event NewSubscription(uint256 indexed tokenId, uint256 indexed expiration)
+```
+
+
+
+
+
+#### Parameters
+
+| Name | Type | Description |
+|---|---|---|
+| tokenId `indexed` | uint256 | undefined |
 | expiration `indexed` | uint256 | undefined |
 
 ### RewardsClaim
@@ -107,7 +120,7 @@ event RewardsClaim(address indexed supporter, uint256 indexed amount)
 ### SubscriptionExtension
 
 ```solidity
-event SubscriptionExtension(uint256 indexed tokenId, uint256 expiration)
+event SubscriptionExtension(uint256 indexed tokenId, uint256 indexed expiration)
 ```
 
 
@@ -119,7 +132,7 @@ event SubscriptionExtension(uint256 indexed tokenId, uint256 expiration)
 | Name | Type | Description |
 |---|---|---|
 | tokenId `indexed` | uint256 | undefined |
-| expiration  | uint256 | undefined |
+| expiration `indexed` | uint256 | undefined |
 
 
 

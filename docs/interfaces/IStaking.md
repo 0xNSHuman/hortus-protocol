@@ -24,7 +24,7 @@ function claimFees() external nonpayable
 ### stake
 
 ```solidity
-function stake(uint256 _amount) external nonpayable
+function stake(uint256 amount) external nonpayable
 ```
 
 
@@ -35,7 +35,7 @@ function stake(uint256 _amount) external nonpayable
 
 | Name | Type | Description |
 |---|---|---|
-| _amount | uint256 | undefined |
+| amount | uint256 | undefined |
 
 ### totalFeesAccumulated
 
@@ -74,7 +74,7 @@ function totalStaked() external view returns (uint256)
 ### unstake
 
 ```solidity
-function unstake(uint256 _amount) external nonpayable
+function unstake(uint256 amount) external nonpayable
 ```
 
 
@@ -85,7 +85,7 @@ function unstake(uint256 _amount) external nonpayable
 
 | Name | Type | Description |
 |---|---|---|
-| _amount | uint256 | undefined |
+| amount | uint256 | undefined |
 
 
 

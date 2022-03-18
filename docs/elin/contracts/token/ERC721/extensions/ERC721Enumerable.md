@@ -1,4 +1,4 @@
-# CommunityVault
+# ERC721Enumerable
 
 
 
@@ -6,7 +6,7 @@
 
 
 
-
+*This implements an optional extension of {ERC721} defined in the EIP that adds enumerability of all the token ids in the contract as well as all token ids owned by each account.*
 
 ## Methods
 
@@ -48,58 +48,6 @@ function balanceOf(address owner) external view returns (uint256)
 | Name | Type | Description |
 |---|---|---|
 | _0 | uint256 | undefined |
-
-### commerceToken
-
-```solidity
-function commerceToken() external view returns (address)
-```
-
-
-
-
-
-
-#### Returns
-
-| Name | Type | Description |
-|---|---|---|
-| _0 | address | undefined |
-
-### configureMembership
-
-```solidity
-function configureMembership(address _commerceToken, uint256 _membershipPrice, uint256 _membershipPeriod) external nonpayable
-```
-
-Update community membership settings
-
-
-
-#### Parameters
-
-| Name | Type | Description |
-|---|---|---|
-| _commerceToken | address | undefined |
-| _membershipPrice | uint256 | undefined |
-| _membershipPeriod | uint256 | undefined |
-
-### factory
-
-```solidity
-function factory() external view returns (address)
-```
-
-
-
-
-
-
-#### Returns
-
-| Name | Type | Description |
-|---|---|---|
-| _0 | address | undefined |
 
 ### getApproved
 
@@ -146,40 +94,6 @@ function isApprovedForAll(address owner, address operator) external view returns
 |---|---|---|
 | _0 | bool | undefined |
 
-### membershipPeriod
-
-```solidity
-function membershipPeriod() external view returns (uint256)
-```
-
-
-
-
-
-
-#### Returns
-
-| Name | Type | Description |
-|---|---|---|
-| _0 | uint256 | undefined |
-
-### membershipPrice
-
-```solidity
-function membershipPrice() external view returns (uint256)
-```
-
-
-
-
-
-
-#### Returns
-
-| Name | Type | Description |
-|---|---|---|
-| _0 | uint256 | undefined |
-
 ### name
 
 ```solidity
@@ -196,23 +110,6 @@ function name() external view returns (string)
 | Name | Type | Description |
 |---|---|---|
 | _0 | string | undefined |
-
-### owner
-
-```solidity
-function owner() external view returns (address)
-```
-
-
-
-*Returns the address of the current owner.*
-
-
-#### Returns
-
-| Name | Type | Description |
-|---|---|---|
-| _0 | address | undefined |
 
 ### ownerOf
 
@@ -235,34 +132,6 @@ function ownerOf(uint256 tokenId) external view returns (address)
 | Name | Type | Description |
 |---|---|---|
 | _0 | address | undefined |
-
-### profileURI
-
-```solidity
-function profileURI() external view returns (string)
-```
-
-
-
-
-
-
-#### Returns
-
-| Name | Type | Description |
-|---|---|---|
-| _0 | string | undefined |
-
-### renounceOwnership
-
-```solidity
-function renounceOwnership() external nonpayable
-```
-
-
-
-*Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner.*
-
 
 ### safeTransferFrom
 
@@ -317,39 +186,6 @@ function setApprovalForAll(address operator, bool approved) external nonpayable
 |---|---|---|
 | operator | address | undefined |
 | approved | bool | undefined |
-
-### subscribe
-
-```solidity
-function subscribe() external payable
-```
-
-Purchase membership
-
-
-
-
-### subscriptionExpiration
-
-```solidity
-function subscriptionExpiration(uint256 tokenId) external view returns (uint256)
-```
-
-Get subscription expiration date
-
-
-
-#### Parameters
-
-| Name | Type | Description |
-|---|---|---|
-| tokenId | uint256 | undefined |
-
-#### Returns
-
-| Name | Type | Description |
-|---|---|---|
-| _0 | uint256 | undefined |
 
 ### supportsInterface
 
@@ -457,28 +293,6 @@ function tokenURI(uint256 tokenId) external view returns (string)
 |---|---|---|
 | _0 | string | undefined |
 
-### totalCreatorRewardsAccumulated
-
-```solidity
-function totalCreatorRewardsAccumulated(address token) external view returns (uint256)
-```
-
-Get total withdrawable amount for creator
-
-
-
-#### Parameters
-
-| Name | Type | Description |
-|---|---|---|
-| token | address | undefined |
-
-#### Returns
-
-| Name | Type | Description |
-|---|---|---|
-| _0 | uint256 | undefined |
-
 ### totalSupply
 
 ```solidity
@@ -513,54 +327,6 @@ function transferFrom(address from, address to, uint256 tokenId) external nonpay
 | from | address | undefined |
 | to | address | undefined |
 | tokenId | uint256 | undefined |
-
-### transferOwnership
-
-```solidity
-function transferOwnership(address newOwner) external nonpayable
-```
-
-
-
-*Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.*
-
-#### Parameters
-
-| Name | Type | Description |
-|---|---|---|
-| newOwner | address | undefined |
-
-### updateProfile
-
-```solidity
-function updateProfile(string uri) external nonpayable
-```
-
-Update community profile data
-
-
-
-#### Parameters
-
-| Name | Type | Description |
-|---|---|---|
-| uri | string | undefined |
-
-### withdrawCreatorRewards
-
-```solidity
-function withdrawCreatorRewards(address token) external nonpayable
-```
-
-Withdraw the payments accumulated for creator
-
-
-
-#### Parameters
-
-| Name | Type | Description |
-|---|---|---|
-| token | address | undefined |
 
 
 
@@ -601,126 +367,6 @@ event ApprovalForAll(address indexed owner, address indexed operator, bool appro
 | owner `indexed` | address | undefined |
 | operator `indexed` | address | undefined |
 | approved  | bool | undefined |
-
-### CreatorRewardsWithdrawal
-
-```solidity
-event CreatorRewardsWithdrawal(address indexed creator, address indexed token, uint256 indexed amount)
-```
-
-
-
-
-
-#### Parameters
-
-| Name | Type | Description |
-|---|---|---|
-| creator `indexed` | address | undefined |
-| token `indexed` | address | undefined |
-| amount `indexed` | uint256 | undefined |
-
-### MembershipConfigurationUpdate
-
-```solidity
-event MembershipConfigurationUpdate(address indexed commerceToken, uint256 indexed membershipPrice, uint256 indexed membershipPeriod)
-```
-
-
-
-
-
-#### Parameters
-
-| Name | Type | Description |
-|---|---|---|
-| commerceToken `indexed` | address | undefined |
-| membershipPrice `indexed` | uint256 | undefined |
-| membershipPeriod `indexed` | uint256 | undefined |
-
-### NewSubscription
-
-```solidity
-event NewSubscription(uint256 indexed tokenId, uint256 indexed expiration)
-```
-
-
-
-
-
-#### Parameters
-
-| Name | Type | Description |
-|---|---|---|
-| tokenId `indexed` | uint256 | undefined |
-| expiration `indexed` | uint256 | undefined |
-
-### OwnershipTransferred
-
-```solidity
-event OwnershipTransferred(address indexed previousOwner, address indexed newOwner)
-```
-
-
-
-
-
-#### Parameters
-
-| Name | Type | Description |
-|---|---|---|
-| previousOwner `indexed` | address | undefined |
-| newOwner `indexed` | address | undefined |
-
-### ProfileUpdate
-
-```solidity
-event ProfileUpdate(string indexed uri)
-```
-
-
-
-
-
-#### Parameters
-
-| Name | Type | Description |
-|---|---|---|
-| uri `indexed` | string | undefined |
-
-### RewardsClaim
-
-```solidity
-event RewardsClaim(address indexed supporter, uint256 indexed amount)
-```
-
-
-
-
-
-#### Parameters
-
-| Name | Type | Description |
-|---|---|---|
-| supporter `indexed` | address | undefined |
-| amount `indexed` | uint256 | undefined |
-
-### SubscriptionExtension
-
-```solidity
-event SubscriptionExtension(uint256 indexed tokenId, uint256 indexed expiration)
-```
-
-
-
-
-
-#### Parameters
-
-| Name | Type | Description |
-|---|---|---|
-| tokenId `indexed` | uint256 | undefined |
-| expiration `indexed` | uint256 | undefined |
 
 ### Transfer
 

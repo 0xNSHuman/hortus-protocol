@@ -13,7 +13,7 @@
 ### createCommunity
 
 ```solidity
-function createCommunity(string _symbol, string _name, address _commerceToken, uint256 _membershipPrice) external nonpayable returns (address)
+function createCommunity(string symbol, string name, address commerceToken, uint256 membershipPrice, uint256 membershipPeriod) external nonpayable returns (address)
 ```
 
 Deploy new community
@@ -24,10 +24,11 @@ Deploy new community
 
 | Name | Type | Description |
 |---|---|---|
-| _symbol | string | undefined |
-| _name | string | undefined |
-| _commerceToken | address | undefined |
-| _membershipPrice | uint256 | undefined |
+| symbol | string | undefined |
+| name | string | undefined |
+| commerceToken | address | undefined |
+| membershipPrice | uint256 | undefined |
+| membershipPeriod | uint256 | undefined |
 
 #### Returns
 
@@ -38,10 +39,10 @@ Deploy new community
 ### protocolFeePolicy
 
 ```solidity
-function protocolFeePolicy() external view returns (uint256 feeNumerator, uint256 feeDenomerator, address receiver, address setter)
+function protocolFeePolicy() external view returns (uint256, uint256, address, address)
 ```
 
-
+Get current protocol fee policy
 
 
 
@@ -50,15 +51,15 @@ function protocolFeePolicy() external view returns (uint256 feeNumerator, uint25
 
 | Name | Type | Description |
 |---|---|---|
-| feeNumerator | uint256 | undefined |
-| feeDenomerator | uint256 | undefined |
-| receiver | address | undefined |
-| setter | address | undefined |
+| _0 | uint256 | undefined |
+| _1 | uint256 | undefined |
+| _2 | address | undefined |
+| _3 | address | undefined |
 
 ### setProtocolFeePolicy
 
 ```solidity
-function setProtocolFeePolicy(uint256 feeNumerator, uint256 feeDenomerator, address receiver, address setter) external nonpayable
+function setProtocolFeePolicy(uint256 feeNumerator, uint256 feeDenominator, address receiver, address setter) external nonpayable
 ```
 
 Set protocol fee policy
@@ -70,7 +71,7 @@ Set protocol fee policy
 | Name | Type | Description |
 |---|---|---|
 | feeNumerator | uint256 | undefined |
-| feeDenomerator | uint256 | undefined |
+| feeDenominator | uint256 | undefined |
 | receiver | address | undefined |
 | setter | address | undefined |
 
@@ -98,7 +99,7 @@ event CommunityDeployment(address indexed creator, address indexed community)
 ### ProtocolFeePolicyUpdate
 
 ```solidity
-event ProtocolFeePolicyUpdate(uint256 feeNumerator, uint256 feeDenomerator, address indexed receiver, address indexed setter)
+event ProtocolFeePolicyUpdate(uint256 feeNumerator, uint256 feeDenominator, address indexed receiver, address indexed setter)
 ```
 
 
@@ -110,7 +111,7 @@ event ProtocolFeePolicyUpdate(uint256 feeNumerator, uint256 feeDenomerator, addr
 | Name | Type | Description |
 |---|---|---|
 | feeNumerator  | uint256 | undefined |
-| feeDenomerator  | uint256 | undefined |
+| feeDenominator  | uint256 | undefined |
 | receiver `indexed` | address | undefined |
 | setter `indexed` | address | undefined |
 

@@ -10,10 +10,10 @@
 
 ## Methods
 
-### configure
+### updateProfile
 
 ```solidity
-function configure(address _commerceToken, uint256 _membershipPrice) external nonpayable
+function updateProfile(string uri) external nonpayable
 ```
 
 
@@ -24,17 +24,16 @@ function configure(address _commerceToken, uint256 _membershipPrice) external no
 
 | Name | Type | Description |
 |---|---|---|
-| _commerceToken | address | undefined |
-| _membershipPrice | uint256 | undefined |
+| uri | string | undefined |
 
 
 
 ## Events
 
-### ConfigurationUpdate
+### ProfileUpdate
 
 ```solidity
-event ConfigurationUpdate(address indexed commerceToken, uint256 indexed membershipPrice)
+event ProfileUpdate(string indexed uri)
 ```
 
 
@@ -45,8 +44,7 @@ event ConfigurationUpdate(address indexed commerceToken, uint256 indexed members
 
 | Name | Type | Description |
 |---|---|---|
-| commerceToken `indexed` | address | undefined |
-| membershipPrice `indexed` | uint256 | undefined |
+| uri `indexed` | string | undefined |
 
 
 
