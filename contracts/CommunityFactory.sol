@@ -6,44 +6,52 @@ import "./interfaces/IProtocolPolicy.sol";
 import "./CommunityVault.sol";
 
 contract CommunityFactory is ICommunityDeployment, IProtocolPolicy {
+    /* TYPES */
+
     struct FeePolicy {
         uint feeNumerator;
-        uint feeDenomerator;
+        uint feeDenominator;
         address receiver;
         address setter;
     }
 
-    FeePolicy public protocolFeePolicy;
+    /* STATE */
+
+    FeePolicy private _protocolFeePolicy;
 
     constructor(
         uint feeNumerator,
-        uint feeDenomerator,
+        uint feeDenominator,
         address feeReceiver,
         address feeSetter
     ) {
-        protocolFeePolicy = FeePolicy(
+        _setProtocolFeePolicy(
             feeNumerator,
-            feeDenomerator,
+            feeDenominator,
             feeReceiver,
             feeSetter
         );
     }
 
+    /* EXTERNAL FUNCTIONS */
+
     /** 
     @notice Deploy new community
     */
     function createCommunity(
-        string calldata _symbol,
-        string calldata _name,
-        address _commerceToken, 
-        uint _membershipPrice
+        string calldata symbol,
+        string calldata name,
+        address commerceToken, 
+        uint membershipPrice,
+        uint membershipPeriod
     ) override external returns (address) {
         address community = address(
             new CommunityVault(
-                _symbol,
-                _name,
-                _commerceToken,
-                _membershipPrice
+                symbol,
+                name,
+                commerceToken,
+                membershipPrice,
+                membershipPeriod
             )
         );
 
@@ -57,24 +65,61 @@ contract CommunityFactory is ICommunityDeployment, IProtocolPolicy {
      */
     function setProtocolFeePolicy(
         uint feeNumerator,
-        uint feeDenomerator,
+        uint feeDenominator,
         address receiver,
         address setter
     ) override external {
-        require(msg.sender == protocolFeePolicy.setter, 'Access Denied');
-        
-        protocolFeePolicy = FeePolicy(
+        require(msg.sender == _protocolFeePolicy.setter, 'Access Denied');
+
+        _setProtocolFeePolicy(
             feeNumerator,
-            feeDenomerator,
+            feeDenominator,
             receiver,
             setter
         );
 
         emit ProtocolFeePolicyUpdate(
             feeNumerator,
-            feeDenomerator,
+            feeDenominator,
             receiver,
             setter
+        );
+    }
+
+    /* PRIVATE FUNCTIONS */
+
+    /**
+    @notice Set protocol fee policy (called indirectly from public/external functions)
+     */
+    function _setProtocolFeePolicy(
+        uint feeNumerator,
+        uint feeDenominator,
+        address receiver,
+        address setter
+    ) private {
+        require(feeDenominator > 0, "Invalid fraction");
+        require(!(feeNumerator > 0 && receiver == address(0)), "Cannot burn fees");
+        require(setter != address(0), "Invalid setter");
+        
+        _protocolFeePolicy = FeePolicy(
+            feeNumerator,
+            feeDenominator,
+            receiver,
+            setter
+        );
+    }
+
+    /* VIEW FUNCTIONS */
+
+    /** 
+    @notice Get current protocol fee policy
+    */
+    function protocolFeePolicy() override external view returns (uint, uint, address, address) {
+        return (
+            _protocolFeePolicy.feeNumerator,
+            _protocolFeePolicy.feeDenominator,
+            _protocolFeePolicy.receiver,
+            _protocolFeePolicy.setter
         );
     }
 }
