@@ -5,9 +5,10 @@ interface ICommunityDeployment {
     event CommunityDeployment(address indexed creator, address indexed community);
 
     function createCommunity(
-        string calldata _symbol,
-        string calldata _name,
-        address _commerceToken, 
-        uint _membershipPrice
+        string calldata symbol,
+        string calldata name,
+        address commerceToken, 
+        uint membershipPrice,
+        uint membershipPeriod
     ) external returns (address);
 }

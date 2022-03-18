@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 interface ICommunity {
-    event ConfigurationUpdate(address indexed commerceToken, uint indexed membershipPrice);
+    event ProfileUpdate(string indexed uri);
     
-    function configure(address _commerceToken, uint _membershipPrice) external;
+    function updateProfile(string calldata uri) external;
 }

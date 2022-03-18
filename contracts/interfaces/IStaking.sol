@@ -6,8 +6,8 @@ interface IStaking {
     event Unstaking(address indexed _staker, uint indexed _amount);
     event FeesClaim(address indexed _staker, uint indexed _amount);
 
-    function stake(uint _amount) external;
-    function unstake(uint256 _amount) external;
+    function stake(uint amount) external;
+    function unstake(uint256 amount) external;
     function claimFees() external;
 
     function totalStaked() external view returns (uint256);

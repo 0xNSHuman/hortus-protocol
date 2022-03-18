@@ -2,13 +2,13 @@
 pragma solidity ^0.8.0;
 
 interface IMembership {
-    event NewSubscription(address indexed supporter, uint indexed expiration);
-    event SubscriptionExtension(uint indexed tokenId, uint expiration);
+    event MembershipConfigurationUpdate(address indexed commerceToken, uint indexed membershipPrice, uint indexed membershipPeriod);
+    event NewSubscription(uint indexed tokenId, uint indexed expiration);
+    event SubscriptionExtension(uint indexed tokenId, uint indexed expiration);
     event RewardsClaim(address indexed supporter, uint indexed amount);
 
+    function configureMembership(address _commerceToken, uint _membershipPrice, uint _membershipPeriod) external;
     function subscribe() external payable;
-    function claimRewards() external;
 
-    function subscriptionExpiration() external view returns (uint);
-    function totalRewardsAccumulated() external view returns (uint);
+    function subscriptionExpiration(uint tokenId) external view returns (uint);
 }

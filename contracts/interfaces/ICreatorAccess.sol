@@ -4,6 +4,7 @@ pragma solidity ^0.8.0;
 interface ICreatorAccess {
     event CreatorRewardsWithdrawal(address indexed creator, address indexed token, uint indexed amount);
     
-    function withdrawCreatorRewards(address _token) external;
-    function totalCreatorRewardsAccumulated(address _token) external view returns (uint);
+    function withdrawCreatorRewards(address token) external;
+    
+    function totalCreatorRewardsAccumulated(address token) external view returns (uint);
 }
