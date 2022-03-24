@@ -31,7 +31,7 @@ const func: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
   const community = CommunityVault__factory.connect(communityAddr, signer);
 
   deployments.save(
-    DEMO_CONTRACTS.community.name, 
+    "CommunityVault", 
     { 
       address: community.address,
       abi: (await deployments.getExtendedArtifact("CommunityVault")).abi,
