@@ -1,6 +1,4 @@
-import { task } from "hardhat/config";
 import "@nomiclabs/hardhat-waffle";
-
 import '@typechain/hardhat';
 import '@nomiclabs/hardhat-ethers';
 import '@nomiclabs/hardhat-waffle';
@@ -8,24 +6,47 @@ import '@nomiclabs/hardhat-solhint';
 import 'solidity-coverage';
 import 'hardhat-gas-reporter';
 import '@primitivefi/hardhat-dodoc';
+import "hardhat-deploy";
+import { resolve } from "path";
+import { config as dotenvConfig } from "dotenv";
+import { HardhatUserConfig } from "hardhat/config";
+import { NetworkUserConfig } from "hardhat/types";
 
-// This is a sample Hardhat task. To learn how to create your own go to
-// https://hardhat.org/guides/create-task.html
-task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
-  const accounts = await hre.ethers.getSigners();
+dotenvConfig({ path: resolve(__dirname, "./.env") });
 
-  for (const account of accounts) {
-    console.log(account.address);
-  }
-});
+const chainIds = {
+    mainnet: 1,
+    rinkeby: 4,
+    ropsten: 3,
+    goerli: 5,
+    hardhat: 1337,
+    kovan: 42,
+};
 
-// You need to export an object to set up your config
-// Go to https://hardhat.org/config/ to learn more
+const privateKey = process.env.PRIVATE_KEY ?? "NO_PRIVATE_KEY";
+const alchemyApiKey = process.env.ALCHEMY_API_KEY ?? "NO_ALCHEMY_API_KEY";
+
+function getChainConfig(network: keyof typeof chainIds): NetworkUserConfig {
+    const url = `https://eth-${network}.alchemyapi.io/v2/${alchemyApiKey}`;
+    return {
+        accounts: [`${privateKey}`],
+        chainId: chainIds[network],
+        url,
+    };
+}
 
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
-export default {
+const config: HardhatUserConfig = {
+  paths: {
+    artifacts: "./artifacts",
+    cache: "./cache",
+    sources: "./contracts",
+    tests: "./test",
+    deploy: "./scripts/deploy",
+    deployments: "./deployments",
+  },
   solidity: {
     version: "0.8.4",
     settings: {
@@ -40,8 +61,30 @@ export default {
       }
     }
   },
+  networks: {
+    hardhat: {
+      forking: {
+          url: `https://eth-mainnet.alchemyapi.io/v2/${alchemyApiKey}`,
+      },
+      chainId: chainIds.hardhat,
+    },
+    mainnet: getChainConfig("mainnet"),
+    rinkeby: getChainConfig("rinkeby"),
+    ropsten: getChainConfig("ropsten"),
+  },
+  namedAccounts: {
+    deployer: {
+      default: 0,
+    },
+    treasury: {
+      default: 1,
+      4: 1
+    },
+  },
   typechain: {
     outDir: "types",
     target: "ethers-v5",
   },
 };
+
+export default config;
