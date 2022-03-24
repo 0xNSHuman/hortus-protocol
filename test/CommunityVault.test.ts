@@ -35,7 +35,7 @@ describe('Community Vault', () => {
 
   const SYMBOL = "TST";
   const NAME = "Test Community";
-  const MEMBERSHIP_PERIOD = BigNumber.from(20000);
+  const MEMBERSHIP_PERIOD = BigNumber.from(200000);
 
   async function createCommunity(
     currencyToken: string,
