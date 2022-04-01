@@ -1,6 +1,6 @@
 import { ethers } from "hardhat";
 import { HardhatRuntimeEnvironment } from "hardhat/types";
-import { DeployFunction, DeploymentSubmission } from "hardhat-deploy/types";
+import { DeployFunction } from "hardhat-deploy/types";
 import { CONTRACTS } from "../../../constants";
 import { DEMO_CONTRACTS } from "../../../demoConstants";
 import {
