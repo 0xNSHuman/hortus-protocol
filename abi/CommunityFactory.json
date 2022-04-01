@@ -1,0 +1,8 @@
+[
+  "constructor(uint256,uint256,address,address)",
+  "event CommunityDeployment(address indexed,address indexed)",
+  "event ProtocolFeePolicyUpdate(uint256,uint256,address indexed,address indexed)",
+  "function createCommunity(string,string,address,uint256,uint256) returns (address)",
+  "function protocolFeePolicy() view returns (uint256, uint256, address, address)",
+  "function setProtocolFeePolicy(uint256,uint256,address,address)"
+]

@@ -1,0 +1,4 @@
+[
+  "event ProfileUpdate(string indexed)",
+  "function updateProfile(string)"
+]

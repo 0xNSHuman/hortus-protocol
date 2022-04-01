@@ -1,0 +1,5 @@
+[
+  "event CreatorRewardsWithdrawal(address indexed,address indexed,uint256 indexed)",
+  "function totalCreatorRewardsAccumulated(address) view returns (uint256)",
+  "function withdrawCreatorRewards(address)"
+]

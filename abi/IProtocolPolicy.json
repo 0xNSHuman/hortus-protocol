@@ -1,0 +1,5 @@
+[
+  "event ProtocolFeePolicyUpdate(uint256,uint256,address indexed,address indexed)",
+  "function protocolFeePolicy() view returns (uint256, uint256, address, address)",
+  "function setProtocolFeePolicy(uint256,uint256,address,address)"
+]

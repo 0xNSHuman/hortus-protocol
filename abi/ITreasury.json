@@ -1,0 +1,4 @@
+[
+  "function stakerFeeDisributionFraction() view returns (uint256)",
+  "function totalFeesAccumulated() view returns (uint256)"
+]

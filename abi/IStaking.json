@@ -1,0 +1,10 @@
+[
+  "event FeesClaim(address indexed,uint256 indexed)",
+  "event Staking(address indexed,uint256 indexed)",
+  "event Unstaking(address indexed,uint256 indexed)",
+  "function claimFees()",
+  "function stake(uint256)",
+  "function totalFeesAccumulated() view returns (uint256)",
+  "function totalStaked() view returns (uint256)",
+  "function unstake(uint256)"
+]

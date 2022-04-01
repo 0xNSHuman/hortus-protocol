@@ -1,0 +1,4 @@
+[
+  "event CommunityDeployment(address indexed,address indexed)",
+  "function createCommunity(string,string,address,uint256,uint256) returns (address)"
+]

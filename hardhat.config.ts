@@ -5,6 +5,7 @@ import '@nomiclabs/hardhat-waffle';
 import '@nomiclabs/hardhat-solhint';
 import 'solidity-coverage';
 import 'hardhat-gas-reporter';
+import 'hardhat-abi-exporter';
 import '@primitivefi/hardhat-dodoc';
 import "hardhat-deploy";
 import { resolve } from "path";
@@ -85,6 +86,15 @@ const config: HardhatUserConfig = {
     outDir: "types",
     target: "ethers-v5",
   },
+  abiExporter: {
+    path: './abi',
+    runOnCompile: true,
+    clear: true,
+    flat: true,
+    spacing: 2,
+    pretty: true,
+    except: ['Mock*'],
+  }
 };
 
 export default config;
