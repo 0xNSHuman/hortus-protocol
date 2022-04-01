@@ -1,4 +1,60 @@
 [
-  "event CommunityDeployment(address indexed,address indexed)",
-  "function createCommunity(string,string,address,uint256,uint256) returns (address)"
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "creator",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "community",
+        "type": "address"
+      }
+    ],
+    "name": "CommunityDeployment",
+    "type": "event"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "symbol",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "internalType": "address",
+        "name": "commerceToken",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "membershipPrice",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "membershipPeriod",
+        "type": "uint256"
+      }
+    ],
+    "name": "createCommunity",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
 ]
