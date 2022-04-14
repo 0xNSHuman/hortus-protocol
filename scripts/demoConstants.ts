@@ -7,7 +7,7 @@ export const DEMO_CONTRACTS = {
     name: "Demo Community",
     currency: ZERO_ADDRESS,
     membershipPrice: ethers.utils.parseEther("0.1"),
-    membershipPeriod: "200000",
+    membershipPeriod: "4",
     profile: {
       pictureUri: "ipfs://Qmf4SFaCMKX24qaPKn4Dh2tCsnz5HDPoyBxsxh5xQ5PgTo",
       name: "My Demo Community",
