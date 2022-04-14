@@ -10,5 +10,8 @@ interface IMembership {
     function configureMembership(address _commerceToken, uint _membershipPrice, uint _membershipPeriod) external;
     function subscribe() external payable;
 
+    function isSubscribed(address subscriber) external view returns (bool);
+    function subscriptionExpiration() external view returns (uint);
+    function subscriptionExpiration(address subscriber) external view returns (uint);
     function subscriptionExpiration(uint tokenId) external view returns (uint);
 }

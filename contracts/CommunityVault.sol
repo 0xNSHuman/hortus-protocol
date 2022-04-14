@@ -197,7 +197,33 @@ ReentrancyGuard {
     }
 
     /** 
-    @notice Get subscription expiration date
+    @notice Verify subscription status for a given address
+    */
+    function isSubscribed(address subscriber) override external view returns (bool) {
+        return this.subscriptionExpiration(subscriber) > block.number;
+    }
+
+    /** 
+    @notice Get subscription expiration date for the message sender
+    */
+    function subscriptionExpiration() override external view returns (uint) {
+        return this.subscriptionExpiration(msg.sender);
+    }
+
+    /** 
+    @notice Get subscription expiration date for a given address
+    */
+    function subscriptionExpiration(address subscriber) override external view returns (uint) {
+        if (balanceOf(subscriber) == 1) {
+            uint tokenId = tokenOfOwnerByIndex(msg.sender, 0);
+            return this.subscriptionExpiration(tokenId);
+        } else { 
+            return 0;
+        }
+    }
+
+    /** 
+    @notice Get subscription expiration date for a given membership token
     */
     function subscriptionExpiration(uint tokenId) override external view returns (uint) {
         return _membershipExpirations[tokenId];

@@ -146,6 +146,28 @@ function isApprovedForAll(address owner, address operator) external view returns
 |---|---|---|
 | _0 | bool | undefined |
 
+### isSubscribed
+
+```solidity
+function isSubscribed(address subscriber) external view returns (bool)
+```
+
+Verify subscription status for a given address
+
+
+
+#### Parameters
+
+| Name | Type | Description |
+|---|---|---|
+| subscriber | address | undefined |
+
+#### Returns
+
+| Name | Type | Description |
+|---|---|---|
+| _0 | bool | undefined |
+
 ### membershipPeriod
 
 ```solidity
@@ -332,10 +354,49 @@ Purchase membership
 ### subscriptionExpiration
 
 ```solidity
+function subscriptionExpiration(address subscriber) external view returns (uint256)
+```
+
+Get subscription expiration date for a given address
+
+
+
+#### Parameters
+
+| Name | Type | Description |
+|---|---|---|
+| subscriber | address | undefined |
+
+#### Returns
+
+| Name | Type | Description |
+|---|---|---|
+| _0 | uint256 | undefined |
+
+### subscriptionExpiration
+
+```solidity
+function subscriptionExpiration() external view returns (uint256)
+```
+
+Get subscription expiration date for the message sender
+
+
+
+
+#### Returns
+
+| Name | Type | Description |
+|---|---|---|
+| _0 | uint256 | undefined |
+
+### subscriptionExpiration
+
+```solidity
 function subscriptionExpiration(uint256 tokenId) external view returns (uint256)
 ```
 
-Get subscription expiration date
+Get subscription expiration date for a given membership token
 
 
 

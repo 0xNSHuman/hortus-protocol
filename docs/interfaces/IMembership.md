@@ -28,6 +28,28 @@ function configureMembership(address _commerceToken, uint256 _membershipPrice, u
 | _membershipPrice | uint256 | undefined |
 | _membershipPeriod | uint256 | undefined |
 
+### isSubscribed
+
+```solidity
+function isSubscribed(address subscriber) external view returns (bool)
+```
+
+
+
+
+
+#### Parameters
+
+| Name | Type | Description |
+|---|---|---|
+| subscriber | address | undefined |
+
+#### Returns
+
+| Name | Type | Description |
+|---|---|---|
+| _0 | bool | undefined |
+
 ### subscribe
 
 ```solidity
@@ -38,6 +60,45 @@ function subscribe() external payable
 
 
 
+
+### subscriptionExpiration
+
+```solidity
+function subscriptionExpiration(address subscriber) external view returns (uint256)
+```
+
+
+
+
+
+#### Parameters
+
+| Name | Type | Description |
+|---|---|---|
+| subscriber | address | undefined |
+
+#### Returns
+
+| Name | Type | Description |
+|---|---|---|
+| _0 | uint256 | undefined |
+
+### subscriptionExpiration
+
+```solidity
+function subscriptionExpiration() external view returns (uint256)
+```
+
+
+
+
+
+
+#### Returns
+
+| Name | Type | Description |
+|---|---|---|
+| _0 | uint256 | undefined |
 
 ### subscriptionExpiration
 

@@ -414,7 +414,7 @@ describe('Community Vault', () => {
         const tokenId = await community.tokenOfOwnerByIndex(supporter.address, 0);
         const block = await ethers.provider.getBlockNumber();
 
-        expect(await community.subscriptionExpiration(tokenId)).to.be.equal(block + MEMBERSHIP_PERIOD.toNumber());
+        expect(await community["subscriptionExpiration(uint256)"](tokenId)).to.be.equal(block + MEMBERSHIP_PERIOD.toNumber());
       });
   
       it("sets membership expiration to [membership expiration] + [membership period] if there is an existing membership left", async () => {
@@ -425,7 +425,7 @@ describe('Community Vault', () => {
         await ethers.provider.send("evm_mine", []);
         await community.connect(supporter).subscribe({ value: membershipPriceInWei });
 
-        expect(await community.subscriptionExpiration(tokenId)).to.be.equal(startBlock + MEMBERSHIP_PERIOD.toNumber() * 2);
+        expect(await community["subscriptionExpiration(uint256)"](tokenId)).to.be.equal(startBlock + MEMBERSHIP_PERIOD.toNumber() * 2);
       });
 
       it("sets membership expiration to [membership period] in the future after previous membership expired", async () => {
@@ -439,7 +439,7 @@ describe('Community Vault', () => {
         await community.connect(supporter).subscribe({ value: membershipPriceInWei });
         const block = await ethers.provider.getBlockNumber();
 
-        expect(await community.subscriptionExpiration(tokenId)).to.be.equal(block + 2);
+        expect(await community["subscriptionExpiration(uint256)"](tokenId)).to.be.equal(block + 2);
       });
   
       it("emits the NewSubscription event for newly minted membership", async () => {
