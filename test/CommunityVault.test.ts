@@ -166,6 +166,33 @@ describe('Community Vault', () => {
     });
   });
 
+  describe('updateEnvironment', () => { 
+    const membershipPrice = BigNumber.from(10000);
+    const uri = "an_arbitrary_uri_string";
+
+    beforeEach(async () => {
+      community = await createCommunity(erc20Mock.address, membershipPrice);
+    });
+    
+    it("can only be done by the contract owner", async () => {
+      await expect(community.connect(other).updateEnvironment(uri))
+        .to.be.reverted;
+    });
+
+    it("sets the new environment URI", async () => {
+      await community.connect(creator).updateEnvironment(uri);
+      
+      expect(await community.envURI())
+        .to.be.equal(uri);
+    });
+
+    it("emits the EnvironmentUpdate event with correct arguments", async () => {
+      await expect(community.connect(creator).updateEnvironment(uri))
+        .to.emit(community, "EnvironmentUpdate")
+        .withArgs(uri);
+    });
+  });
+
   describe('updateProfile', () => { 
     const membershipPrice = BigNumber.from(10000);
     const uri = "an_arbitrary_uri_string";
