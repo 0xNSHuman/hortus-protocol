@@ -84,6 +84,23 @@ Update community membership settings
 | _membershipPrice | uint256 | undefined |
 | _membershipPeriod | uint256 | undefined |
 
+### envURI
+
+```solidity
+function envURI() external view returns (string)
+```
+
+
+
+
+
+
+#### Returns
+
+| Name | Type | Description |
+|---|---|---|
+| _0 | string | undefined |
+
 ### factory
 
 ```solidity
@@ -591,13 +608,29 @@ function transferOwnership(address newOwner) external nonpayable
 |---|---|---|
 | newOwner | address | undefined |
 
+### updateEnvironment
+
+```solidity
+function updateEnvironment(string uri) external nonpayable
+```
+
+Update community environment config reference
+
+
+
+#### Parameters
+
+| Name | Type | Description |
+|---|---|---|
+| uri | string | undefined |
+
 ### updateProfile
 
 ```solidity
 function updateProfile(string uri) external nonpayable
 ```
 
-Update community profile data
+Update community profile reference
 
 
 
@@ -680,6 +713,22 @@ event CreatorRewardsWithdrawal(address indexed creator, address indexed token, u
 | creator `indexed` | address | undefined |
 | token `indexed` | address | undefined |
 | amount `indexed` | uint256 | undefined |
+
+### EnvironmentUpdate
+
+```solidity
+event EnvironmentUpdate(string indexed uri)
+```
+
+
+
+
+
+#### Parameters
+
+| Name | Type | Description |
+|---|---|---|
+| uri `indexed` | string | undefined |
 
 ### MembershipConfigurationUpdate
 

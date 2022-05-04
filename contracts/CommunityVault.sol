@@ -31,6 +31,7 @@ ReentrancyGuard {
     address public commerceToken;
     uint public membershipPrice;
     uint public membershipPeriod;
+    string public envURI;
     string public profileURI;
     Counters.Counter private _tokenIdCounter;
     mapping(uint => uint) private _membershipExpirations;
@@ -73,7 +74,15 @@ ReentrancyGuard {
     }
 
     /**
-    @notice Update community profile data
+    @notice Update community environment config reference
+    */
+    function updateEnvironment(string calldata uri) override external onlyOwner { 
+        envURI = uri;
+        emit EnvironmentUpdate(uri);
+    }
+
+    /**
+    @notice Update community profile reference
     */
     function updateProfile(string calldata uri) override external onlyOwner {
         profileURI = uri;
